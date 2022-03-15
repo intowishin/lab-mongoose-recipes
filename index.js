@@ -25,17 +25,16 @@ mongoose
     return Recipe.insertMany(data);
   })
   .then(() => {
-    return Recipe.find({}, 'title', (err, docs) => {
-      if(err){
-        console.log(err)
+    Recipe.find({}, "title", (err, docs) => {
+      if (err) {
+        console.log(err);
 
-        return
+        return;
       }
-      console.log(docs)
-
-    })
-    //print the title of each recipe to console
-    //console.log(title of recipe)
+      for (let i = 0; i < docs.length; i++) {
+        console.log(docs[i].title);
+      }
+    });
   })
   .catch((error) => {
     console.error("Error connecting to the database", error);
